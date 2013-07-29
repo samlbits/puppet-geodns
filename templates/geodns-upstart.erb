@@ -1,0 +1,15 @@
+description "geodns"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+script
+    ENABLE_GEODNS="yes"
+    GEODNS_DIR=/var/lib/geodns
+    test -f /etc/default/geodns && . /etc/default/geodns
+    mkdir -p $GEODNS_DIR/dns
+    if [ "x$ENABLE_GEODNS" = "xyes" ]; then
+        mkdir -p $GEODNS_DIR/dns
+        exec start-stop-daemon --pidfile /var/run/geodns.pid --make-pidfile --chdir $GEODNS_DIR --start --name geodns --startas /usr/lib/go/bin/geodns
+    fi
+end script
