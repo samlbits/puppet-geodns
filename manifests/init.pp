@@ -4,12 +4,9 @@ Exec {
 }
 
 include ufw
-include golang
 
 class geodns {
-   package {'golang':
-      ensure => 'installed'
-   }
+   include 'golang'
    package {'build-essential':
       ensure => 'installed'
    }
