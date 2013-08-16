@@ -27,13 +27,15 @@ class geodns {
       path      => '/etc/init/geodns.conf',
       ensure    => file,
       require   => Exec['geodns-install'],
-      content   => template('geodns/geodns-upstart.erb')
+      content   => template('geodns/geodns-upstart.erb'),
+      notify    => Service['geodns']
    }
    file {'geodns-defaults':
       path      => '/etc/default/geodns',
       ensure    => file,
       require   => Exec['geodns-install'],
-      content   => template('geodns/geodns-defaults.erb')
+      content   => template('geodns/geodns-defaults.erb'),
+      notify    => Service['geodns']
    }
    service {'geodns':
       ensure    => 'running',
