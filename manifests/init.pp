@@ -18,8 +18,8 @@ class geodns {
    }
    exec {'geodns-install':
       require   => [Package[golang],Package[libgeoip-dev]],
-      command   => "go get github.com/abh/geodns",
-      creates   => "/usr/lib/go/src/pkg/github.com/abh/geodns"
+      command   => "go get -u -v github.com/leifj/geodns",
+      creates   => "/usr/lib/go/src/pkg/github.com/leifj/geodns"
    }
    file {'geodns-upstart':
       path      => '/etc/init/geodns.conf',
