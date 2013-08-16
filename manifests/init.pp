@@ -20,7 +20,7 @@ class geodns {
       require   => [Package[golang],Package[libgeoip-dev]],
       command   => "go get -u -v github.com/leifj/geodns.git",
       creates   => "/usr/lib/go/src/pkg/github.com/leifj/geodns",
-      environment => "GOPATH=/usr/lib/go"
+      environment => "GOPATH=/opt/geodns"
    }
    file {'geodns-upstart':
       path      => '/etc/init/geodns.conf',

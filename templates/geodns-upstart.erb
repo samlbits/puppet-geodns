@@ -10,6 +10,6 @@ script
     mkdir -p $GEODNS_DIR/dns
     if [ "x$ENABLE_GEODNS" = "xyes" ]; then
         mkdir -p $GEODNS_DIR/dns
-        exec start-stop-daemon --pidfile /var/run/geodns.pid --make-pidfile --chdir $GEODNS_DIR --start --name geodns --startas /usr/lib/go/bin/geodns -- -http="127.0.0.1:8053"
+        exec start-stop-daemon --pidfile /var/run/geodns.pid --make-pidfile --chdir $GEODNS_DIR --start --name geodns --startas /opt/geodns/bin/geodns -- -http="127.0.0.1:8053"
     fi
 end script
