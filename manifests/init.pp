@@ -4,6 +4,7 @@ Exec {
 }
 
 include ufw
+include golang
 
 class geodns {
    package {'golang':
