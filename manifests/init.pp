@@ -19,7 +19,7 @@ class geodns {
    exec {'geodns-install':
       require   => [Package[golang],Package[libgeoip-dev]],
       command   => "go get -u -v github.com/leifj/geodns",
-      creates   => "/usr/lib/go/src/pkg/github.com/leifj/geodns",
+      creates   => "/opt/geodns/bin/geodns",
       environment => "GOPATH=/opt/geodns",
       notify    => Service['geodns']
    }
