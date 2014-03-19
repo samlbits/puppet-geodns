@@ -17,7 +17,7 @@ class geodns {
    } ->
    package {'git-core':
       ensure => 'installed'
-   } ->
+   }
    include 'golang'
    exec {'geodns-install':
       require   => [Package[golang],Package[libgeoip-dev]],
