@@ -1,0 +1,14 @@
+{
+  "name": "puppet-geodns",
+  "version": "1.0.0",
+  "author": "Leif Joahansson",
+  "summary": "A puppet module for mon",
+  "license": "BSD",
+  "source": "git://github.com/samlbits/puppet-geodns",
+  "project_page": "https://github.com/samlbits/puppet-geodns",
+  "issues_url": "https://github.com/samlbits/puppet-geodns/issues",
+  "description": "Installs and manages geodns & configuration",
+  "dependencies": [
+  
+  ]
+}
