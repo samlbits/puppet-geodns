@@ -5,6 +5,19 @@ Exec {
 
 include ufw
 
+class go {
+  case $::operatingsystem {
+    'Ubuntu': { 
+       case $::operatingsystemrelease {
+          '12.04': { include 'golang' }
+          '14.04': { package { 'golang': ensure => latest }}
+          default: { fail "Unknown release ${::operatingsystem} ${::operatingsystemrelease}" }
+       }
+    }
+    default: { fail "Unknown ${::operatingsystem}" }
+  }
+}
+
 class geodns {
    package {'mercurial': 
       ensure => 'installed'
@@ -18,7 +31,7 @@ class geodns {
    package {'git-core':
       ensure => 'installed'
    }
-   include 'golang'
+   class {'go': }
    exec {'geodns-install':
       require   => [Package[golang],Package[libgeoip-dev]],
       command   => "go get -u -v github.com/leifj/geodns",
