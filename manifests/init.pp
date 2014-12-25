@@ -9,7 +9,10 @@ class go {
   case $::operatingsystem {
     'Ubuntu': { 
        case $::operatingsystemrelease {
-          '12.04': { include 'golang' }
+          '12.04': { 
+             apt::ppa { 'ppa:juju/golang': }
+             include 'golang' 
+          }
           '14.04': { package { 'golang': ensure => latest }}
           default: { fail "Unknown release ${::operatingsystem} ${::operatingsystemrelease}" }
        }
