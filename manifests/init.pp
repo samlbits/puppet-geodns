@@ -62,7 +62,7 @@ class geodns {
    }
    ufw::allow { "allow-dns":
       ip   => 'any',
-      port => 53,
+      port => '53',
       proto => "udp"
    }
 }
